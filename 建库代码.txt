@@ -1,0 +1,82 @@
+create table person_apply                                         #个人报名表
+(id int(11) not null primary key auto_increment,                                 #    序号
+name varchar(15) not null,                                              #姓名
+sex enum('boy','girl'),                                            #enum里面不能是中文   性别
+stu_num int(15) not null,                                                   # 学号
+college varchar(40),                                                   #院系
+major varchar(10),                                                     #专业
+phone_num int(12) not null);                                          #手机号
+
+
+create table  manage_detail                                           #管理者信息表
+(id int(11) not null primary key auto_increment,                      #自增id
+name varchar(15) not null,                                               #姓名
+sex enum('boy','girl'),                                             #性别
+stu_num int(15) not null,                                           #学号
+college varchar(40),                                                         #院系
+major varchar(10),                                                        #专业
+phone_num int(12) not null,                                             #手机号
+organization varchar(10) not null,                                      #组织名
+post varchar(10)                                                 #   职位
+);
+
+
+create table acti_detail                                                 #活动信息表
+(id int(11) not null primary key auto_increment,                      #自增id
+acti_name varchar(30) not null,                                          #活动名
+acti_detail longtext not null,                                     #活动内容                                       
+acti_character varchar(50),                                              #活动类型
+pub_time datetime not null,                                        #发布时间
+acti_condition enum('not_push','In','out_of_date'),                        #活动状态
+acti_belong varchar(10),                                             #组织归属
+acti_end_time datetime,                                             #截止报名时间
+apply_time datetime);                                                #接受报名时间                                   
+
+
+create table inform_detail                                       # 通知信息表
+(id int(11) not null primary key auto_increment,                      #自增id
+message_title varchar(25),                                           #信息名
+message_detail longtext not null,                                     #通知内容
+time datetime,                                                      #通知时间
+message_belong varchar(25) not null);                              #发布组织
+
+
+create table team_apply                                                 # 团体报名表
+(id int(11) not null primary key,                                          #增加主键
+leader_name varchar(15),                                                   #队长名
+leader_contact int(12) not null,                                          #队长联系方式
+team_name varchar(15) not null,                                            #队伍名称
+people_total int(5),                                                    #队伍人数
+leader_stu_num int(15),                                                         #队长学号
+member_name text);                                                          #队员姓名
+
+create table user_detail                                                   #用户信息表
+(id int(11) not null primary key auto_increment,                         #自增id
+name varchar(15) not null,                                            #姓名
+sex enum('boy','girl'),                                                #性别
+stu_num int(15) not null,                                               #学号
+college varchar(40),                                                    #院系
+major varchar(10),                                                    #专业
+phone_num int(12) not null,                                            #手机号
+wechat_id varchar(25));                                                    #微信号
+
+create table account_detail                                                 # 账号信息表
+(id int(11) primary key not null auto_increment,                             #自增id
+account varchar(25) not null,                                              #账号名
+password varchar(16) not null);                                            #密码
+
+create table  team_detail                                                   # 组织信息表
+(id int(11) primary key not null auto_increment,                             #自增id
+organization varchar(15) not null,                                      #组织名
+organi_character enum('college','club','global'),          #college院系，club俱乐部，global校级                                        #组织性质
+tea_name varchar(25),                                                    #指导老师
+principal varchar(5)not null);                                          #负责人姓名
+
+
+
+
+
+
+
+
+
